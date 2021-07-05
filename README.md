@@ -2,7 +2,7 @@
 package main
 
 import (
-	"github/jordancurve/dbslice"
+	"github.com/jordancurve/dbslice"
 	"github.com/jmoiron/sqlx"
 )
 
