@@ -4,7 +4,7 @@ package main
 import (
 	"fmt"
 	"github/jordancurve/dbslice"
-	"sqlx"
+	"github.com/jmoiron/sqlx"
 )
 
 type Place struct {
