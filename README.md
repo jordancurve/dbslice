@@ -3,8 +3,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/jordancurve/dbslice"
 	"github.com/jmoiron/sqlx"
+	"github.com/jordancurve/dbslice"
+	_ "github.com/mattn/go-sqlite3"
 )
 
 type Place struct {
@@ -16,7 +17,7 @@ type Place struct {
 func main() {
 	db, err := sqlx.Open("sqlite3", ":memory:")
 	if err != nil {
-		t.Fatalf("sqlx.Open() failded: %s", err)
+		panic(fmt.Sprintf("sqlx.Open() failed: %s", err))
 	}
 	want := []Place{
 		{"usa", "sf", 7071234567},
@@ -26,5 +27,6 @@ func main() {
 	dbslice.MustInsertSlice(db, "places", want)
 	got := []Place{}
 	dbslice.MustAppendToSlice(db, &got, "select * from places")
+	fmt.Printf("got=%v\n", got)
 }
 ```
