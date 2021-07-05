@@ -1,4 +1,4 @@
-module jordancurve.com/dbslice
+module github.com/jordancurve/dbslice
 
 go 1.16
 
