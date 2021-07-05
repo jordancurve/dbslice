@@ -2,6 +2,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/jordancurve/dbslice"
 	"github.com/jmoiron/sqlx"
 )
@@ -21,7 +22,7 @@ func main() {
 		{"usa", "sf", 7071234567},
 		{"canada", "vancouver", 12345},
 	}
-	db.MustExec(CreateTableSQL("places", []Place{}))
+	db.MustExec(dbslice.CreateTableSQL("places", []Place{}))
 	dbslice.MustInsertSlice(db, "places", want)
 	got := []Place{}
 	dbslice.MustAppendToSlice(db, &got, "select * from places")
