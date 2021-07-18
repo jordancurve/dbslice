@@ -38,7 +38,7 @@ func CreateTableSQL(tableName string, slice interface{}, opts ...Option) string 
 	for i := 0; i < s.NumField(); i++ {
 		column := s.Field(i).Tag.Get("db")
 		if column == "" {
-			panic(fmt.Sprintf("CreateTableSQL: missing column struct tag for field %q", s.Field(i).Name))
+			continue
 		}
 		if s.Field(i).Tag.Get("dbslice") == "primarykey" {
 			primaryKeys = append(primaryKeys, column)
