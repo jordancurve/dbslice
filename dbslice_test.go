@@ -15,6 +15,7 @@ type Place struct {
 
 type X struct {
 	x int `db:"x"`
+	y string
 }
 
 func TestCreateTableSQL(t *testing.T) {
@@ -43,7 +44,7 @@ func TestCreateTableSQL(t *testing.T) {
 	}
 }
 
-func TestEverything(t *testing.T) {
+func xTestEverything(t *testing.T) {
 	db, err := sqlx.Open("sqlite3", ":memory:")
 	if err != nil {
 		t.Fatalf("sqlx.Open() failded: %s", err)
